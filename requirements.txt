@@ -10,3 +10,4 @@ scikit-learn>=0.18
 matplotlib>=1.4.3
 pandas>=0.19
 scikit-multilearn>= 0.2
+xlsxwriter == 3.0.1
