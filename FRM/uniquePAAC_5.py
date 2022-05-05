@@ -4,7 +4,7 @@ import numpy as np
 import string
 import xlsxwriter
 import time
-import csv
+import csv 
 from propy import PyPro
 from propy.GetProteinFromUniprot import GetProteinSequence
 
