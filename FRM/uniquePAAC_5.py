@@ -6,9 +6,8 @@ import xlsxwriter
 import time
 import csv 
 import sys
-sys.path.append("./propy")
-import PyPro
-from GetProteinFromUniprot import GetProteinSequence
+from FRM.propy import PyPro
+from FRM.propy.GetProteinFromUniprot import GetProteinSequence
 
 class PAAC_5:
 
