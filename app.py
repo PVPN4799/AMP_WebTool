@@ -23,8 +23,9 @@ from FRM.H_S import hamming_score
 from joblib import dump, load
 
 from flask import Flask, request, jsonify, render_template
+import __main__
+__main__.hamming_score = hamming_score
 
-% FLASK_APP=flask_start flask run
 app = Flask(__name__)
 
 
