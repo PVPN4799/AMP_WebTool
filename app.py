@@ -122,7 +122,7 @@ def predict():
 				if pred3.toarray()[0][0] == 1:
 					output = output + "Anti Gram Positive \n"
 				if pred3.toarray()[0][1] == 1:
-					output = output + "Anti Gram Negative \n"
+					output = output + " \n Anti Gram Negative "
 	else:
 		output = "Invalid Sequence"
 
