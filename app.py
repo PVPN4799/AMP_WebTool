@@ -52,7 +52,7 @@ def predict():
 	for i in x:
 		if i in AALetter:
 			continue
-		else
+		else:
 			flag = 1
 	if flag == 0:
 	
