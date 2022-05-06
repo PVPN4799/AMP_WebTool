@@ -18,13 +18,12 @@ from FRM import uniquePAAC_10
 from FRM import Cleanup
 
 from FRM import MLC_metric as mlc
+from FRM.H_S import hamming_score
 
 from joblib import dump, load
 
 from flask import Flask, request, jsonify, render_template
 
-def hamming_score(y_test,pred):
-    return 1-metrics.hamming_loss(y_test,pred)
 
 app = Flask(__name__)
 
