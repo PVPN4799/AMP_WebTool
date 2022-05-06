@@ -49,7 +49,7 @@ def predict():
 	flag = 0
 	output = ""
 	AALetter = list("ARNDCEQGHILKMFPSTWYV")
-	for i in x:
+	for i in seq:
 		if i in AALetter:
 			continue
 		else:
