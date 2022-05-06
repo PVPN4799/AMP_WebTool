@@ -46,74 +46,84 @@ def home():
 @app.route('/predict',methods=['POST'])
 def predict():
 	seq = [x for x in request.form.values()][0]
-	
-	
-	if len(seq) > 10:
-		obj7 = uniquePAAC_10.PAAC_10()
-		obj7.all_features=[]
-		amp_aac = obj7.seqinp2(seq)
-		X7 = amp_aac.drop(columns='Sequence')
-		pred = model11.predict(X7)
-	elif len(seq) > 5:
-		obj7 = uniquePAAC_5.PAAC_5()
-		obj7.all_features=[]
-		amp_aac = obj7.seqinp2(seq)
-		X7 = amp_aac.drop(columns='Sequence')
-		pred = model12.predict(X7)
-	else:
-		obj7 = uniqueAAC.AAC()
-		obj7.all_features=[]
-		amp_aac = obj7.seqinp2(seq)
-		X7 = amp_aac.drop(columns='Sequence')
-		pred = model13.predict(X7)
+	flag = 0
 	output = ""
-	if pred[0] == 0:
-		output = "Non-AMP"
-	else:
-		output = "AMP \n"
+	AALetter = list("ARNDCEQGHILKMFPSTWYV")
+	for i in x:
+		if i in AALetter:
+			continue
+		else
+			flag = 1
+	if flag == 0:
+	
 		if len(seq) > 10:
 			obj7 = uniquePAAC_10.PAAC_10()
 			obj7.all_features=[]
 			amp_aac = obj7.seqinp2(seq)
 			X7 = amp_aac.drop(columns='Sequence')
-			pred2 = model21.predict(X7)
+			pred = model11.predict(X7)
 		elif len(seq) > 5:
 			obj7 = uniquePAAC_5.PAAC_5()
 			obj7.all_features=[]
 			amp_aac = obj7.seqinp2(seq)
 			X7 = amp_aac.drop(columns='Sequence')
-			pred2 = model22.predict(X7)
+			pred = model12.predict(X7)
 		else:
 			obj7 = uniqueAAC.AAC()
 			obj7.all_features=[]
 			amp_aac = obj7.seqinp2(seq)
 			X7 = amp_aac.drop(columns='Sequence')
-			pred2 = model23.predict(X7)
+			pred = model13.predict(X7)
 		
-		if pred2.toarray()[0][0] == 1:
-			output = output + "Antibacterial \n"
-		if pred2.toarray()[0][1] == 1:
-			output = output + "Antiviral \n"
-		if pred2.toarray()[0][2] == 1:
-			output = output + "Antifungal \n"
-		if pred2.toarray()[0][0] == 1:
+		if pred[0] == 0:
+			output = "Non-AMP"
+		else:
+			output = "AMP \n"
 			if len(seq) > 10:
 				obj7 = uniquePAAC_10.PAAC_10()
 				obj7.all_features=[]
 				amp_aac = obj7.seqinp2(seq)
 				X7 = amp_aac.drop(columns='Sequence')
-				pred3 = model31.predict(X7)
+				pred2 = model21.predict(X7)
+			elif len(seq) > 5:
+				obj7 = uniquePAAC_5.PAAC_5()
+				obj7.all_features=[]
+				amp_aac = obj7.seqinp2(seq)
+				X7 = amp_aac.drop(columns='Sequence')
+				pred2 = model22.predict(X7)
 			else:
 				obj7 = uniqueAAC.AAC()
 				obj7.all_features=[]
 				amp_aac = obj7.seqinp2(seq)
 				X7 = amp_aac.drop(columns='Sequence')
-				pred3 = model32.predict(X7)
+				pred2 = model23.predict(X7)
 		
-			if pred3.toarray()[0][0] == 1:
-				output = output + "Anti Gram Positive \n"
+			if pred2.toarray()[0][0] == 1:
+				output = output + "Antibacterial \n"
 			if pred2.toarray()[0][1] == 1:
-				output = output + "Anti Gram Negative \n"
+				output = output + "Antiviral \n"
+			if pred2.toarray()[0][2] == 1:
+				output = output + "Antifungal \n"
+			if pred2.toarray()[0][0] == 1:
+				if len(seq) > 10:
+					obj7 = uniquePAAC_10.PAAC_10()
+					obj7.all_features=[]
+					amp_aac = obj7.seqinp2(seq)
+					X7 = amp_aac.drop(columns='Sequence')
+					pred3 = model31.predict(X7)
+				else:
+					obj7 = uniqueAAC.AAC()
+					obj7.all_features=[]
+					amp_aac = obj7.seqinp2(seq)
+					X7 = amp_aac.drop(columns='Sequence')
+					pred3 = model32.predict(X7)
+		
+				if pred3.toarray()[0][0] == 1:
+					output = output + "Anti Gram Positive \n"
+				if pred3.toarray()[0][1] == 1:
+					output = output + "Anti Gram Negative \n"
+	else:
+		output = "Invalid Sequence"
 
 	return render_template('index.html', prediction_text = "Sequence is {}".format(output))
 
