@@ -46,6 +46,7 @@ def home():
 @app.route('/predict',methods=['POST'])
 def predict():
 	seq = [x for x in request.form.values()][0]
+	seq = seq.upper()
 	flag = 0
 	output = ""
 	AALetter = list("ARNDCEQGHILKMFPSTWYV")
