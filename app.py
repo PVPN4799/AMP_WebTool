@@ -24,7 +24,7 @@ from joblib import dump, load
 
 from flask import Flask, request, jsonify, render_template
 
-
+% FLASK_APP=flask_start flask run
 app = Flask(__name__)
 
 
