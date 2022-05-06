@@ -23,10 +23,11 @@ from joblib import dump, load
 
 from flask import Flask, request, jsonify, render_template
 
-app = Flask(__name__)
-
 def hamming_score(y_test,pred):
     return 1-metrics.hamming_loss(y_test,pred)
+
+app = Flask(__name__)
+
 
 model11 = load("Lvl_1_PC10.joblib")
 model12 = load("Lvl_1_PC5.joblib")
