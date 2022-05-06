@@ -5,8 +5,10 @@ import string
 import xlsxwriter
 import time
 import csv
-from propy import PyPro
-from propy.GetProteinFromUniprot import GetProteinSequence
+import sys
+sys.path.append("./propy")
+import PyPro
+from GetProteinFromUniprot import GetProteinSequence
 
 class PAAC_10:
 
