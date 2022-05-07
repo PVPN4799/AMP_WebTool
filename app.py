@@ -79,7 +79,7 @@ def predict():
 		if pred[0] == 0:
 			output = "Non-AMP"
 		else:
-			output = "AMP \n"
+			output = "AMP <br>"
 			if len(seq) > 10:
 				obj7 = uniquePAAC_10.PAAC_10()
 				obj7.all_features=[]
@@ -100,11 +100,11 @@ def predict():
 				pred2 = model23.predict(X7)
 		
 			if pred2.toarray()[0][0] == 1:
-				output = output + "Antibacterial \n"
+				output = output + "Antibacterial <br>"
 			if pred2.toarray()[0][1] == 1:
-				output = output + "Antiviral \n"
+				output = output + "Antiviral <br>"
 			if pred2.toarray()[0][2] == 1:
-				output = output + "Antifungal \n"
+				output = output + "Antifungal <br>"
 			if pred2.toarray()[0][0] == 1:
 				if len(seq) > 10:
 					obj7 = uniquePAAC_10.PAAC_10()
@@ -120,9 +120,9 @@ def predict():
 					pred3 = model32.predict(X7)
 		
 				if pred3.toarray()[0][0] == 1:
-					output = output + "Anti Gram Positive \n"
+					output = output + "Anti Gram Positive <br>"
 				if pred3.toarray()[0][1] == 1:
-					output = output + " \n Anti Gram Negative "
+					output = output + "Anti Gram Negative <br>"
 	else:
 		output = "Invalid Sequence"
 
