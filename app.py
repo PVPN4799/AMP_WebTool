@@ -48,7 +48,7 @@ def predict():
 	seq = [x for x in request.form.values()][0]
 	seq = seq.upper()
 	flag = 0
-	output = ""
+	output = "Sequence is \n"
 	AALetter = list("ARNDCEQGHILKMFPSTWYV")
 	for i in seq:
 		if i in AALetter:
@@ -79,7 +79,7 @@ def predict():
 		if pred[0] == 0:
 			output = "Non-AMP"
 		else:
-			output = "AMP <br>"
+			output = "AMP \n"
 			if len(seq) > 10:
 				obj7 = uniquePAAC_10.PAAC_10()
 				obj7.all_features=[]
@@ -100,11 +100,11 @@ def predict():
 				pred2 = model23.predict(X7)
 		
 			if pred2.toarray()[0][0] == 1:
-				output = output + "Antibacterial <br>"
+				output = output + "Antibacterial \n"
 			if pred2.toarray()[0][1] == 1:
-				output = output + "Antiviral <br>"
+				output = output + "Antiviral \n"
 			if pred2.toarray()[0][2] == 1:
-				output = output + "Antifungal <br>"
+				output = output + "Antifungal \n"
 			if pred2.toarray()[0][0] == 1:
 				if len(seq) > 10:
 					obj7 = uniquePAAC_10.PAAC_10()
@@ -120,13 +120,13 @@ def predict():
 					pred3 = model32.predict(X7)
 		
 				if pred3.toarray()[0][0] == 1:
-					output = output + "Anti Gram Positive <br>"
+					output = output + "Anti Gram Positive \n"
 				if pred3.toarray()[0][1] == 1:
-					output = output + "Anti Gram Negative <br>"
+					output = output + "Anti Gram Negative \n"
 	else:
 		output = "Invalid Sequence"
 
-	return render_template('index.html', prediction_text = "Sequence is {}".format(output))
+	return render_template('index.html', prediction_text = output)
 
 if __name__ == "__main__":
 	app.run(debug=True)
