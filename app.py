@@ -77,9 +77,9 @@ def predict():
 			pred = model13.predict(X7)
 		
 		if pred[0] == 0:
-			output = "Non-AMP"
+			output = output+"Non-AMP"
 		else:
-			output = "AMP <br>"
+			output = output+ "AMP <br>"
 			if len(seq) > 10:
 				obj7 = uniquePAAC_10.PAAC_10()
 				obj7.all_features=[]
