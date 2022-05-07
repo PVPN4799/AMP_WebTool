@@ -193,15 +193,18 @@ body {
     <div class="user-box">
       <input type="text"  name="sequence" placeholder="Peptide Sequence" required="required" />
 	<ul class="noBullet">
-	<li id="center-btn">
+	<li id="left-btn">
         <input type="submit" id="join-btn" name="predict" alt="Predict" value="Predict">
       </li>
+	
     	</ul>
     </div>
     
   </form>
+     <div class="user-box">
+	{{prediction_text|safe}}
+     </div>
+ </div>
   <br>
   <br>
-  {{prediction_text|safe}}
-</div>
 </html>
